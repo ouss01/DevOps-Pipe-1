@@ -10,7 +10,24 @@ pipeline{
 
               }
         }
-
+       stage ('MVN Clean')
+              {
+               steps{
+                      sh 'mvn clean install -DskipTests'
+                 }
+              }
+               stage ('MVN compile')
+              {
+               steps{
+                      sh 'mvn compile'
+                    }
+                }
+                 stage ('build package')
+                {
+                 steps{
+                        sh 'mvn clean package'
+                    }
+                }
        }
 
 
